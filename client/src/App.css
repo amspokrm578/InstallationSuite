@@ -1,0 +1,12 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  transition: background 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 0;
+}
