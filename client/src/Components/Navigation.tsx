@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
+import { useAuth } from '../contexts/AuthContext';
+import { routes, moduleConfig } from '../config/routes';
+import type { ModuleId } from '../types/rbac';
 import './Navigation.css';
 
 interface NavigationProps {
@@ -11,20 +15,68 @@ interface NavigationProps {
 
 function Navigation({ currentUser }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModulesMenuOpen, setIsModulesMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { canView } = useAuth();
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
+
+  // Filter modules based on user permissions
+  const accessibleModules = useMemo(() => {
+    return moduleConfig.filter((module) => {
+      return canView(module.id as ModuleId);
+    });
+  }, [canView]);
 
   return (
     <nav className="navigation">
       <div className="nav-container">
-        <div className="nav-brand">
-          <h2>Task Manager</h2>
-        </div>
+        <Link to={routes.dashboard} className="nav-brand-link">
+          <div className="nav-brand">
+            <h2>Installation Management</h2>
+          </div>
+        </Link>
         
         <div className="nav-links">
-          <a href="#dashboard" className="nav-link active">Dashboard</a>
-          <a href="#tasks" className="nav-link">My Tasks</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#team" className="nav-link">Team</a>
+          <Link 
+            to={routes.dashboard} 
+            className={`nav-link ${isActive(routes.dashboard) ? 'active' : ''}`}
+          >
+            Dashboard
+          </Link>
+          <div 
+            className="nav-link-menu"
+            onMouseEnter={() => setIsModulesMenuOpen(true)}
+            onMouseLeave={() => setIsModulesMenuOpen(false)}
+          >
+            <span className={`nav-link ${location.pathname !== routes.dashboard && moduleConfig.some(m => isActive(m.path)) ? 'active' : ''}`}>
+              Modules ▼
+            </span>
+            {isModulesMenuOpen && (
+              <div className="modules-dropdown">
+                {accessibleModules.length > 0 ? (
+                  accessibleModules.map((module) => (
+                    <Link
+                      key={module.id}
+                      to={module.path}
+                      className={`dropdown-item ${isActive(module.path) ? 'active' : ''}`}
+                    >
+                      <span className="dropdown-icon">{module.icon}</span>
+                      <div>
+                        <div className="dropdown-title">{module.name}</div>
+                        <div className="dropdown-subtitle">{module.description}</div>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="dropdown-item no-access">
+                    <span>No accessible modules</span>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="nav-user">
@@ -73,9 +125,11 @@ function Navigation({ currentUser }: NavigationProps) {
                     <span className="dropdown-email">{currentUser.email}</span>
                   </div>
                   <div className="dropdown-divider"></div>
-                  <a href="#profile" className="dropdown-item">Profile</a>
-                  <a href="#settings" className="dropdown-item">Settings</a>
-                  <a href="#logout" className="dropdown-item">Logout</a>
+                  <Link to="/profile" className="dropdown-item">Profile</Link>
+                  <Link to="/settings" className="dropdown-item">Settings</Link>
+                  <Link to="/roles" className="dropdown-item">My Roles & Permissions</Link>
+                  <div className="dropdown-divider"></div>
+                  <a href="#logout" className="dropdown-item" onClick={(e) => { e.preventDefault(); }}>Logout</a>
                 </div>
               )}
             </div>
