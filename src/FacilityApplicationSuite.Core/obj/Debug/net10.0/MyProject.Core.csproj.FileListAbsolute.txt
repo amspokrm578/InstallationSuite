@@ -1,0 +1,12 @@
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\bin\Debug\net10.0\MyProject.Core.deps.json
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\bin\Debug\net10.0\MyProject.Core.dll
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\bin\Debug\net10.0\MyProject.Core.pdb
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.AssemblyInfoInputs.cache
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.AssemblyInfo.cs
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.csproj.CoreCompileInputs.cache
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.sourcelink.json
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.dll
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\refint\MyProject.Core.dll
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\MyProject.Core.pdb
+C:\Users\chmus\OneDrive\Documents\Rossy_Project\TS_project1\src\MyProject.Core\obj\Debug\net10.0\ref\MyProject.Core.dll

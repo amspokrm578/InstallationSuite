@@ -7,10 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+dotnet-install.ps1
+add-to-path.ps1
 node_modules
 dist
 dist-ssr
 *.local
+
+# Temporary Claude working directories
+tmpclaude-*
 
 # Editor directories and files
 .vscode/*
